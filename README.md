@@ -9,10 +9,8 @@
 
 A modular AI-driven well log interpretation platform that unifies **data processing**, **intelligent analysis**, and **interactive visualization** into a single integrated environment. Designed for geoscientists and drilling engineers, it accelerates decision-making by combining microservice scalability with LLM-powered insights.
 
-🔗 **Live Demo**: [https://your-live-demo-link.com](https://your-live-demo-link.com)  
-📘 **API Documentation**: [http://your-api-url.com/api/docs/](http://your-api-url.com/api/docs/)  
-👨‍💻 **Admin Panel**: [http://your-ai-agent-url.com/admin/](http://your-ai-agent-url.com/admin/) *(demo credentials available upon request)*
-
+🔗 **Live Demo**: (https://welllogdash.pythonanywhere.com/)  
+📘 **API Documentation**: [https://autamatawelllog.pythonanywhere.com/api/docs/]  
 ---
 
 ## 📚 Table of Contents
@@ -45,23 +43,23 @@ The platform follows a clean, layered architecture where each service has a dist
 ### High-Level Flow
 <img width="3113" height="3208" alt="deepseek_mermaid_20260303_571abe" src="https://github.com/user-attachments/assets/d1f2be76-787f-4d89-9fe4-221202da45e7" />
 
-**Flow Explanation:
+## Flow Explanation:
 
-- **User (geoscientist/engineer) interacts with the Dash Dashboard (frontend) to select a well and depth interval, then requests an interpretation.
+- User (geoscientist/engineer) interacts with the Dash Dashboard (frontend) to select a well and depth interval, then requests an interpretation.
 
-- **Dash sends the request to the DRF API (backend) via REST call.
+- Dash sends the request to the DRF API (backend) via REST call.
 
-- **DRF API retrieves relevant well data from its internal database and forwards the request along with context to the Core AI Chat Agent.
+- DRF API retrieves relevant well data from its internal database and forwards the request along with context to the Core AI Chat Agent.
 
-- **AI Agent constructs an appropriate prompt and calls an LLM Provider (e.g., Groq, OpenAI) with the contextual data.
+- AI Agent constructs an appropriate prompt and calls an LLM Provider (e.g., Groq, OpenAI) with the contextual data.
 
-- **LLM Provider returns the interpretation (text analysis) to the AI Agent.
+- LLM Provider returns the interpretation (text analysis) to the AI Agent.
 
-- **AI Agent sends the result back to the DRF API.
+- AI Agent sends the result back to the DRF API.
 
-- **DRF API returns the result to Dash.
+- DRF API returns the result to Dash.
 
-- **Dash displays the insight to the user.
+- Dash displays the insight to the user.
 
 ### Detailed Component Interaction
 
@@ -108,7 +106,8 @@ To make exploration immediate, the platform comes preloaded with **anonymized we
 
 Users can select different wells and depth intervals to see how the AI interprets real-world formations.
 
-*Sample data files are available upon request or via the live demo.*
+*Download Sample data files are available here *
+https://drive.google.com/file/d/1M9GsFAcx2rdFoqZaUoA3FA4sA-bsk93t/view?usp=sharing
 
 ---
 
