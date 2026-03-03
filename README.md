@@ -43,3 +43,87 @@ A modular AI-driven well log interpretation platform that unifies **data process
 The platform follows a clean, layered architecture where each service has a distinct responsibility. The data flows seamlessly from user interaction to AI-powered insight.
 
 ### High-Level Flow
+[User]
+↓ (interacts with)
+[Dash Frontend – Port 8009] # Interactive well log dashboard
+↓ (sends analysis requests)
+[DRF API – Port 8000] # Business logic & orchestration
+↓ (queries AI)
+[Core AI Chat Agent – Port 8010] # LLM interpretation engine
+↓ (returns insights)
+[DRF API]
+↓ (forwards to Dash)
+[User sees results]
+
+text
+
+### Detailed Component Interaction
+
+1. **User Interaction** – The geoscientist selects a well, depth interval, and requests interpretation via the Dash dashboard.
+2. **API Orchestration** – The DRF API receives the request, retrieves relevant well log data from its database, and forwards it to the AI Agent.
+3. **AI Processing** – The Core AI Chat Agent uses a prompt engineered for well log analysis, sends the data to an LLM (e.g., Groq, OpenAI), and receives a human-readable interpretation.
+4. **Response Delivery** – The AI response is sent back to the DRF API, which may enrich it with additional metadata, and finally displays it on the Dash dashboard.
+
+---
+
+## 📦 Services Overview
+
+| Service | Port | Technology | Responsibility |
+|---------|------|------------|----------------|
+| **Dash Visualization** | `8009` | Plotly Dash | Interactive frontend for well log browsing and analysis requests |
+| **DRF API** | `8000` | Django REST Framework | Business logic, data aggregation, and AI service orchestration |
+| **Core AI Chat Agent** | `8010` | Python + LangChain | LLM integration, prompt management, and interpretation generation |
+
+All services are containerized and communicate via internal networking, ensuring separation of concerns and easy scalability.
+
+---
+
+## 🔐 AI Agent Integration
+
+The DRF service communicates with the AI Chat Agent using a secure API key. The agent is designed to be **provider-agnostic**, meaning it can switch between different LLM backends (Groq, OpenAI, DeepSeek, Ollama) without modifying core application code.
+
+**Key capabilities of the AI Agent:**
+- **Dynamic prompt templates** tailored to well log interpretation.
+- **Contextual memory** to maintain conversation history across requests.
+- **Multi‑tenant isolation** (if deployed for multiple clients).
+- **Fallback mechanisms** for LLM provider outages.
+
+---
+
+## 🗄 Sample Data
+
+To make exploration immediate, the platform comes preloaded with **anonymized well log datasets**. These include:
+
+- Gamma Ray (GR)
+- Resistivity (LLD, LLS)
+- Neutron Porosity (NPHI)
+- Density (RHOB)
+- Sonic (DT)
+
+Users can select different wells and depth intervals to see how the AI interprets real-world formations.
+
+*Sample data files are available upon request or via the live demo.*
+
+---
+
+## 💡 Why This Approach?
+
+- **Microservices** allow independent development, testing, and scaling of each layer.
+- **AI abstraction** future-proofs the system against new LLM providers.
+- **Dash frontend** provides a rich, interactive experience without complex JavaScript frameworks.
+- **Docker Compose** simplifies local development and deployment, while the architecture remains cloud-ready.
+
+---
+
+## 📬 Contact
+
+**Maxy Silaen**  
+Senior Python Backend Engineer & AI Consultant
+
+- 🔗 [LinkedIn](https://linkedin.com/in/maxy-silaen-99ab0658)  
+- 💻 [GitHub](https://github.com/maxyadamsilaen)  
+- 📧 maxyadamsilaen1207@gmail.com
+
+---
+
+⭐ *If you'd like to discuss how this architecture can be adapted to your specific well log interpretation or industrial AI needs, feel free to reach out.*
