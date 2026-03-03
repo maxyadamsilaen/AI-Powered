@@ -43,19 +43,25 @@ A modular AI-driven well log interpretation platform that unifies **data process
 The platform follows a clean, layered architecture where each service has a distinct responsibility. The data flows seamlessly from user interaction to AI-powered insight.
 
 ### High-Level Flow
-[User]
-↓ (interacts with)
-[Dash Frontend – Port 8009] # Interactive well log dashboard
-↓ (sends analysis requests)
-[DRF API – Port 8000] # Business logic & orchestration
-↓ (queries AI)
-[Core AI Chat Agent – Port 8010] # LLM interpretation engine
-↓ (returns insights)
-[DRF API]
-↓ (forwards to Dash)
-[User sees results]
+<img width="3113" height="3208" alt="deepseek_mermaid_20260303_571abe" src="https://github.com/user-attachments/assets/d1f2be76-787f-4d89-9fe4-221202da45e7" />
 
-text
+**Flow Explanation:
+
+- **User (geoscientist/engineer) interacts with the Dash Dashboard (frontend) to select a well and depth interval, then requests an interpretation.
+
+- **Dash sends the request to the DRF API (backend) via REST call.
+
+- **DRF API retrieves relevant well data from its internal database and forwards the request along with context to the Core AI Chat Agent.
+
+- **AI Agent constructs an appropriate prompt and calls an LLM Provider (e.g., Groq, OpenAI) with the contextual data.
+
+- **LLM Provider returns the interpretation (text analysis) to the AI Agent.
+
+- **AI Agent sends the result back to the DRF API.
+
+- **DRF API returns the result to Dash.
+
+- **Dash displays the insight to the user.
 
 ### Detailed Component Interaction
 
